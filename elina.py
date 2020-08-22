@@ -1,3 +1,4 @@
+import random
 import telebot
 
 from telebot import types
@@ -13,9 +14,10 @@ def welcome(message):
     item1 = types.KeyboardButton("Поругайся")
     item2 = types.KeyboardButton("Расскажи о себе")
     item3 = types.KeyboardButton("Котенок")
+    item4 = types.KeyboardButton("Что приготовить?")
     
 
-    markup.add(item1,item2,item3)
+    markup.add(item1,item2,item3,item4)
     
     bot.send_message(message.chat.id, "Привет, {0.first_name} меня зовут Элина. ".format(message.from_user, bot.get_me()),
         parse_mode='html', reply_markup=markup)
@@ -43,6 +45,10 @@ def lalala(message):
 
 
             bot.send_message(message.chat.id, 'Ну как видишь я бот. Какой-то черт заточил меня в какой-то телеге и теперь я выполняю всякие команды. А так-то я художница, спортсменка, чайлдф..комсомолка', reply_markup=markup)
+        elif message.text == 'Что приготовить?':
+            city_list = ['Гречка с капустой', 'Овсянка с бананами', 'Пюре с огурцами и помидорами', 'Пшено с орехами и капустой', 'Ячмень с капустой', 'Овсянка с персиками', 'Творог с бананами']
+            print(random.choice(city_list))
+            bot.send_message(message.chat.id, random.choice(city_list))
 
         elif message.text == "Котенок":
             bot.send_photo(message.chat.id, 'https://opt-1031816.ssl.1c-bitrix-cdn.ru/upload/resize_cache/iblock/8b8/750_400_1/pochemu_kotenok_lizhet_volosy_i_zaryvaetsja_v_nih.jpg?152818987087154')
