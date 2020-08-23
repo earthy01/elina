@@ -11,13 +11,14 @@ bot = telebot.TeleBot(TOKEN)
 def welcome(message):
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("Поругайся")
+    item1 = types.KeyboardButton("Орел или решка")
     item2 = types.KeyboardButton("Расскажи о себе")
     item3 = types.KeyboardButton("Котенок")
-    item4 = types.KeyboardButton("Что приготовить?")
+    item4 = types.KeyboardButton("Основное блюдо")
+    item5 = types.KeyboardButton("Десерт")
     
 
-    markup.add(item1,item2,item3,item4)
+    markup.add(item1,item2,item3,item4,item5)
     
     bot.send_message(message.chat.id, "Привет, {0.first_name} меня зовут Элина. ".format(message.from_user, bot.get_me()),
         parse_mode='html', reply_markup=markup)
@@ -26,14 +27,14 @@ def welcome(message):
 @bot.message_handler(content_types=['text'])
 def lalala(message):
     if message.chat.type == 'private':
-        if message.text == 'Поругайся':
+        if message.text == 'Орел или решка':
  
             markup = types.InlineKeyboardMarkup(row_width=4)
-            item1 = types.InlineKeyboardButton("Мощно ругаешься!", callback_data='jest')
+            item1 = types.InlineKeyboardButton("Тебе повезло!", callback_data='jest')
  
             markup.add(item1)
- 
-            bot.send_message(message.chat.id, 'Ты - жопа', reply_markup=markup)
+            item_list = ['Орел', 'Решка']
+            bot.send_message(message.chat.id, random.choice(item_list), reply_markup=markup)
 
         elif message.text == 'Расскажи о себе':
 
@@ -45,10 +46,14 @@ def lalala(message):
 
 
             bot.send_message(message.chat.id, 'Ну как видишь я бот. Какой-то черт заточил меня в какой-то телеге и теперь я выполняю всякие команды. А так-то я художница, спортсменка, чайлдф..комсомолка', reply_markup=markup)
-        elif message.text == 'Что приготовить?':
-            city_list = ['Гречка с капустой', 'Овсянка с бананами', 'Пюре с огурцами и помидорами', 'Пшено с орехами и капустой', 'Ячмень с капустой', 'Овсянка с персиками', 'Творог с бананами']
-            print(random.choice(city_list))
-            bot.send_message(message.chat.id, random.choice(city_list))
+        elif message.text == 'Основное блюдо':
+            food_list = ['Гречка с капустой', 'Овсянка с бананами', 'Пюре с огурцами и помидорами', 'Пшено c капустой', 'Ячмень с капустой', 'Овсянка с персиками', 'Рис с кукурузой', 'Яичница с салатом', 'Манка', 'Салат', 'Гречка с огурцами и помидорами', 'Овсянка с капустой', 'Рис с капустой']
+            bot.send_message(message.chat.id, random.choice(food_list))
+
+        elif message.text == 'Десерт':
+            desert_list = ['Блинчики', 'Творог с бананами', 'Тортик', 'Печеньки', 'Кофе с взбитыми сливками', 'Хлопья','Шоколад', 'Элиночка']
+            print(random.choice(desert_list))
+            bot.send_message(message.chat.id, random.choice(desert_list))    
 
         elif message.text == "Котенок":
             bot.send_photo(message.chat.id, 'https://opt-1031816.ssl.1c-bitrix-cdn.ru/upload/resize_cache/iblock/8b8/750_400_1/pochemu_kotenok_lizhet_volosy_i_zaryvaetsja_v_nih.jpg?152818987087154')
@@ -62,7 +67,7 @@ def callback_inline(call):
     try:
         if call.message:
             if call.data == 'jest':
-                bot.send_message(call.message.chat.id, 'Конечно! А ты как хотел(а) 😊')
+                bot.send_message(call.message.chat.id, 'Конечно!😊')
             elif call.data == 'about':
                 bot.send_message(call.message.chat.id, 'Внатуре.')
     except Exception as e:
