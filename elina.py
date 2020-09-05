@@ -62,7 +62,7 @@ def lalala(message):
             bot.send_message(message.chat.id, random.choice(mood_list))      
 
         elif message.text == "Котенок":
-            cat_list= ['https://hvost.news/upload/resize_cache/iblock/8b8/750_400_1/pochemu_kotenok_lizhet_volosy_i_zaryvaetsja_v_nih.jpg', 'https://petstime.ru/sites/default/files/styles/article-500/public/field/image/5week.jpg?itok=f4zhCXrL','https://i.pinimg.com/originals/52/83/61/528361ccabb359c715ebfc5f01038764.jpg','https://vplate.ru/images/article/orig/2019/04/kotenok-v-1-2-mesyaca-osobennosti-razvitiya-i-uhoda-25.jpg','https://www.acana.ru/media/article/kotyonok-ne-est-suhoy-korm-kak-priuchit.jpg','https://avatars.mds.yandex.net/get-zen_doc/1704908/pub_5cfa3f3bbabd4000b092ba9d_5cfa45edbbfeea00af312197/scale_1200']
+            cat_list= ['https://123emoji.com/wp-content/uploads/2016/04/200-30.gif','https://hvost.news/upload/resize_cache/iblock/8b8/750_400_1/pochemu_kotenok_lizhet_volosy_i_zaryvaetsja_v_nih.jpg', 'https://petstime.ru/sites/default/files/styles/article-500/public/field/image/5week.jpg?itok=f4zhCXrL','https://i.pinimg.com/originals/52/83/61/528361ccabb359c715ebfc5f01038764.jpg','https://vplate.ru/images/article/orig/2019/04/kotenok-v-1-2-mesyaca-osobennosti-razvitiya-i-uhoda-25.jpg','https://www.acana.ru/media/article/kotyonok-ne-est-suhoy-korm-kak-priuchit.jpg','https://avatars.mds.yandex.net/get-zen_doc/1704908/pub_5cfa3f3bbabd4000b092ba9d_5cfa45edbbfeea00af312197/scale_1200']
             bot.send_photo(message.chat.id, random.choice(cat_list))
 
         elif message.text == 'Мотивация':
